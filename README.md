@@ -1,52 +1,57 @@
-# ToxProgress
-![test](https://thumbs.gfycat.com/LimpAmpleCuckoo-size_restricted.gif)
-<center><a href="https://toxsickcoder.github.io/tox-progress">Click here for the live version</a></center>
+# D3: Data-Driven Documents
 
-## Introduction
+<a href="https://d3js.org"><img src="https://d3js.org/logo.svg" align="left" hspace="10" vspace="6"></a>
 
-This library was made to easily create **animated radial progress bars**.
+**D3** (or **D3.js**) is a JavaScript library for visualizing data using web standards. D3 helps you bring data to life using SVG, Canvas and HTML. D3 combines powerful visualization and interaction techniques with a data-driven approach to DOM manipulation, giving you the full capabilities of modern browsers and the freedom to design the right visual interface for your data.
 
-The goal of these animated radial progress bars is to add a stylized way to show numbers/statistics on your website.
+## Resources
 
-## How to use
+* [API Reference](https://github.com/d3/d3/blob/master/API.md)
+* [Release Notes](https://github.com/d3/d3/releases)
+* [Gallery](https://github.com/d3/d3/wiki/Gallery)
+* [Examples](https://bl.ocks.org/mbostock)
+* [Wiki](https://github.com/d3/d3/wiki)
 
-The way to include a **ToxProgressBar** to your website is to link the `tox-progress.js` and `tox-progress.css` files on your web page. You can then add a ToxProgressBar by using this tag:
+## Installing
 
-``` javascript
-<div class="tox-progress" data-size="180" data-thickness="12" data-color="#229922" data-background="#ffffff" data-progress="25" data-speed="500"></div>
+If you use npm, `npm install d3`. Otherwise, download the [latest release](https://github.com/d3/d3/releases/latest). The released bundle supports anonymous AMD, CommonJS, and vanilla environments. You can load directly from [d3js.org](https://d3js.org), [CDNJS](https://cdnjs.com/libraries/d3), or [unpkg](https://unpkg.com/d3/). For example:
+
+```html
+<script src="https://d3js.org/d3.v5.js"></script>
 ```
 
-The div needs to have the `class="tox-progress"`. This makes the div visible to the library. There also are a few properties we can see:
-- **Size**: The diameter of the radial progress bar circle.
-- **Thickness**: This is the thickness of the radial progress bar.
-- **Color**: The foreground color. This is the color the radial progress bar will be.
-- **Background**: The background color. This should to be the same color as your website. You can also use another color to create some interesting effects
-- **Progress**: A number from 0-100 which marks the progress of the radial progress bar.
-- **Speed**: The speed in ms in which the animation would do a full circle.
+For the minified version:
 
-There is also the possibility to add content inside the radial progress bar. Add this div inside the `class="tox-progress"` div:
-
-``` javascript
-<div class="tox-progress" data-size="180" data-thickness="12" data-color="#229922" data-background="#ffffff" data-progress="25" data-speed="500">
-     <div class="tox-progress-content" data-vcenter="true">
-         //Add content here
-     </div>
- </div>
- ```
-
-So first add the `class="tox-progress-content"` to the div. If you want this content vertically centered add the `data-vcenter="true"` property. You can add any content you want in here.
-
-Then include the following code on your website:
-
-``` javascript
-<script type="text/javascript">
-    document.addEventListener('DOMContentLoaded', function () {
-        ToxProgress.create();
-        ToxProgress.animate();
-    });
-</script>
+```html
+<script src="https://d3js.org/d3.v5.min.js"></script>
 ```
 
-The `ToxProgress.create();` function generates everything needed. It has to be called before the `ToxProgress.animate();` function. The `ToxProgress.animate();` function can be called whenever you want.
+You can also use the standalone D3 microlibraries. For example, [d3-selection](https://github.com/d3/d3-selection):
 
-If you want to reset the animation, call `ToxProgress.create();` before you call `ToxProgress.animate();` again.
+```html
+<script src="https://d3js.org/d3-selection.v1.js"></script>
+```
+
+D3 is written using [ES2015 modules](http://www.2ality.com/2014/09/es6-modules-final.html). Create a [custom bundle using Rollup](https://bl.ocks.org/mbostock/bb09af4c39c79cffcde4), Webpack, or your preferred bundler. To import D3 into an ES2015 application, either import specific symbols from specific D3 modules:
+
+```js
+import {scaleLinear} from "d3-scale";
+```
+
+Or import everything into a namespace (here, `d3`):
+
+```js
+import * as d3 from "d3";
+```
+
+In Node:
+
+```js
+var d3 = require("d3");
+```
+
+You can also require individual modules and combine them into a `d3` object using [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign):
+
+```js
+var d3 = Object.assign({}, require("d3-format"), require("d3-geo"), require("d3-geo-projection"));
+```
